@@ -3,6 +3,7 @@ package pilhajava;
 public class Pilha<T> {
     private int topo;
     private T[] elementos;
+    private String teste;
     
     public Pilha(int tamanho){
         elementos =(T[]) new Object[tamanho];
