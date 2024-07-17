@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estilo.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
@@ -15,19 +16,19 @@
         <nav>
             <ul>
                 <li>
-                    <a href=""> Home</a>
+                    <a href="${pageContext.request.contextPath}/index.jsp"> Home</a>
                 </li>
                 <li>
-                    <a href=""> Cidade</a>
+                    <a href="${pageContext.request.contextPath}${URL_BASE}/CidadeControlador?opcao=cancelar"> Cidade</a>
                 </li>
                 <li>
-                    <a href=""> Funcionário</a>
+                    <a href="${pageContext.request.contextPath}${URL_BASE}/FuncionarioControlador?opcao=cancelar"> Funcionário</a>
                 </li>
                 <li>
-                    <a href=""> Login</a>
+                    <a href="${pageContext.request.contextPath}/login.jsp"> Login</a>
                 </li>
                 <li>
-                    <a href=""> Logout</a>
+                    <a href="${pageContext.request.contextPath}${URL_BASE}/LogoutControlador"> Logout</a>
                 </li>
             </ul>
         </nav>

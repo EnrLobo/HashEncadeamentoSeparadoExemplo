@@ -1,0 +1,20 @@
+nav ul{
+    list-style-type: none;/*Remove os marcadores da lista.*/
+    padding: 10px;/* espaço entre as barras */
+    background-color: #333;/*Cor de fundo da barra*/
+}
+
+nav ul li{
+    display: inline;/* exibe os itens da lista lado a lado*/
+    margin-right: 10px;/*espaçamento entre os itens*/
+}
+
+nav ul li a{
+    color: white; /*Cor do texto do link*/
+    text-decoration: none;/* remove o sublinhado do link*/
+    font-weight: bold;/*texto dos links em negrito*/
+}
+
+nav ul li a:hover{
+    color:#ccc;/*cor do texto do link ao passar o mouse*/
+}

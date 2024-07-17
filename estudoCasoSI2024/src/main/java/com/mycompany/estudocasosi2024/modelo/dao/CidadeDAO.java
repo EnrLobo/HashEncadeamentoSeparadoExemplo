@@ -31,7 +31,7 @@ public class CidadeDAO extends GenericoDAO<Cidade>{
     }
     
     public List<Cidade> buscarTodas(){
-        String select = "SELECT FROM CIDADE";
+        String select = "SELECT *  FROM CIDADE";
         return buscarTodos(select, new CidadeRowMapper());
     }
     
