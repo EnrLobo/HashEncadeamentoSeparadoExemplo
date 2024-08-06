@@ -4,7 +4,6 @@
  */
 package com.mycompany.estudocasosi2024.modelo.dao;
 
-
 import com.mycompany.estudocasosi2024.modelo.entidade.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,17 +33,18 @@ public class UsuarioDAO {
         return null;
     }
     
-    public void registrarUsuario(String username, String plainPassword) {
+    public void registrarUsuario(String username, String plainPassword, String email) {
     // Gerar hash da senha
     String hashedPassword = BCrypt.hashpw(plainPassword, BCrypt.gensalt());
 
     // Inserir usuário no banco de dados
-    String sql = "INSERT INTO usuarios (username, password_hash) VALUES (?, ?)";
+    String sql = "INSERT INTO usuarios (username, password_hash,email) VALUES (?, ?,?)";
     try (Connection con = ConnectionFactory.getInstance().getConnection();
          PreparedStatement stmt = con.prepareStatement(sql)) {
 
         stmt.setString(1, username);
         stmt.setString(2, hashedPassword);
+        stmt.setString(3, email);
         stmt.executeUpdate();
     } catch (SQLException e) {
         e.printStackTrace();

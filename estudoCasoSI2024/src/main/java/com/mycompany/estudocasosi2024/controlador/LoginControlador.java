@@ -13,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -73,19 +74,35 @@ public class LoginControlador extends HttpServlet {
             request.getSession().setAttribute("user", username);
             response.sendRedirect("/estudoCasoSI/index.jsp");
         } else {
-            request.setAttribute("error", "Usuário ou senha inválidos");
-            request.getRequestDispatcher("/estudoCasoSI/login.jsp").forward(request, response);
+            request.setAttribute("mensagem", "Usuário ou senha inválidos");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
 
     }
     
      private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        usuarioDAO.registrarUsuario(username, password);
+        usuarioDAO.registrarUsuario(username, password, email);
         request.setAttribute("mensagem", "Usuário cadastrado com sucesso!");
         RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
         dispatcher.forward(request, response);
 
     }
+      @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    logout(request, response);
+    
+    }
+       protected void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+          HttpSession session = request.getSession(false); // Obter a sessão, não criar uma nova
+        if (session != null) {
+            session.invalidate(); // Encerra a sessão
+             request.setAttribute("mensagem", "Sessão encerrada");
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+           dispatcher.forward(request, response);
+        //response.sendRedirect("/projetoWEB/login.jsp");
+       
+       }
 }
 
 

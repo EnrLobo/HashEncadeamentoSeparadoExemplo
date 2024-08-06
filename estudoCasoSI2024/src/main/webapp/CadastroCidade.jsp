@@ -21,11 +21,12 @@
             <input type="hidden" name="codigoCidade" value="${codigoCidade}" />
             <p><label>Cidade: </label><input type="text" name="nomeCidade" value="${nomeCidade}" size="40" /> </p>
             <p><label>UF: </label><input type="text" name="ufCidade" value="${ufCidade}" size="5" /> </p>
-            <td>
+            <<td>
                 <input type="submit"  value="Salvar" name="Salvar" />
             </td>
-            
+                  
         </form>
+            
             <form id="cadastroForm" name="cadastroForm" action="${pageContext.request.contextPath}${URL_BASE}/CidadeControlador" method="get">
                 <td>
                     <input type="submit"  value="Cancelar" name="Cancelar" />
